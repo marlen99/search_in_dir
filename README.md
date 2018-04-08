@@ -10,19 +10,19 @@
 ### Пример
   Есть папка root, которая хранит директории и файлы:
   ```
-  root/file.txt: 4 Where am I?
-  root/Newfolder/Newfile.txt: 2 Simple text
-  root/Newfolder/Newfolder/Newfile.txt: 5 So much files!
-  root/Newfolder(1)/Newfile.txt: 3 Wow? Text?
-  root/Newfolder(1)/Newfile1.txt: 1 Small text
+  root/file.txt: 5 Is it test?
+  root/folder_1/file.txt: 7 All right
+  root/folder_2/file.txt: 9 Good job!
+  root/folder_2/file1.txt: 2 Hi, stranger
+  root/folder_2/folder/file.txt: 4 Hello, world!
   ```
   Будучи запущенной в директории root, скрипт выведет:
   ```
-  1 Small text
-  2 Simple text
-  3 Wow? Text?
-  4 Where am I?
-  5 So much files!
+  2 Hi, stranger
+  4 Hello, world!
+  5 Is it test?
+  7 All right
+  9 Good job!
   ```
 # Скрипт create_testing_catalog
   Получает на вход название создаваемой директории(**dir**), глубину вложенности папок(**depth**) и число файлов и папок в одной директории(**width**). В результате создает каталог(**dir**) с папками с максимальной глубиной вложенности, введенной пользователем(**depth**), и текстовыми файлами, содержащими одну строку. Количество файлов и папок в одной директории не превышает введенного числа(**width**).
