@@ -1,9 +1,10 @@
 import os
 import sys
+import argparse
 
 
-def check_dir(path='.'):
-    res = [] #инициализация возвращаемого списка пар чисел и строк
+def check_dir(path):
+    res = [] #инициализация возвращаемого списка строк
     try:
         os.scandir(path)
     except OSError:
@@ -20,17 +21,24 @@ def check_dir(path='.'):
                         print("Cannot open a file", entry.path, file=sys.stderr) #вывод ошибки на экран
                     else:
                         line = file.readline().strip() #чтение первой строки файла
-                        if line.split()[0].isdigit(): 
-                            num = int(line.split()[0]) 
-                            res.append([num, line]) #добавление пары из числа и строки из файла в возвращаемый список
+                        if line.split()[0].isdigit():  
+                            res.append(line) #добавление строки из файла в возвращаемый список
+                        file.close()
     return res
 
 
+def sort_by_num(string):
+    return int(string.split()[0])
+
+
 def main():
-    ans = check_dir()
-    ans.sort()
-    for i in ans:
-        print(i[1])
+    parser = argparse.ArgumentParser(prog='search_in_dir')
+    parser.add_argument('path', help='путь к директории, в которой будет производиться поиск')
+    args = parser.parse_args()
+    ans = check_dir(args.path)
+    ans.sort(key=sort_by_num)
+    for string in ans:
+        print(string)
 
 
 if __name__ == "__main__":
