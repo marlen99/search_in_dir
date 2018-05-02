@@ -20,8 +20,12 @@ def check_dir(path):
                     except OSError:
                         print("Cannot open a file", entry.path, file=sys.stderr) #вывод ошибки на экран
                     else:
-                        line = file.readline().strip() #чтение первой строки файла
-                        if line.split()[0].isdigit():  
+                        line = file.readline() #чтение первой строки файла
+                        try:
+                            int(line.split()[0])
+                        except TypeError:
+                            continue;
+                        else:
                             res.append(line) #добавление строки из файла в возвращаемый список
                         file.close()
     return res
