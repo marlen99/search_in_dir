@@ -24,10 +24,11 @@ def check_dir(path):
                         try:
                             int(line.split()[0])
                         except TypeError:
-                            continue;
+                            file.close()
+                            continue
                         else:
                             res.append(line) #добавление строки из файла в возвращаемый список
-                        file.close()
+                            file.close()
     return res
 
 
