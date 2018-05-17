@@ -23,7 +23,7 @@ def check_dir(path):
                         line = file.readline() #чтение первой строки файла
                         try:
                             int(line.split()[0])
-                        except TypeError:
+                        except ValueError:
                             file.close()
                             continue
                         else:
